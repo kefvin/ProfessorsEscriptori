@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="555.0" prefWidth="589.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <ListView fx:id="alumnes" layoutX="67.0" layoutY="182.0" onMouseClicked="#buscaExercicis" prefHeight="342.0" prefWidth="200.0" />
+      <ListView fx:id="exercicis" layoutX="308.0" layoutY="182.0" prefHeight="342.0" prefWidth="200.0" />
+      <Label layoutX="117.0" layoutY="116.0" text="Alumnes">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Label layoutX="360.0" layoutY="116.0" text="Exercicis">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <TextField fx:id="curs" layoutX="145.0" layoutY="60.0" promptText="5" />
+      <Label layoutX="67.0" layoutY="54.0" text="Curs">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+      <Button layoutX="375.0" layoutY="54.0" mnemonicParsing="false" onAction="#buscaAlumnes" prefHeight="38.0" prefWidth="81.0" text="Cerca" />
+   </children>
+</AnchorPane>
