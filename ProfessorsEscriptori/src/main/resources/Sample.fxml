@@ -6,8 +6,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="555.0" prefWidth="589.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="555.0" prefWidth="589.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Sintesis.ProfessorsEscriptori.SampleController">
    <children>
       <ListView fx:id="alumnes" layoutX="67.0" layoutY="182.0" onMouseClicked="#buscaExercicis" prefHeight="342.0" prefWidth="200.0" />
       <ListView fx:id="exercicis" layoutX="308.0" layoutY="182.0" prefHeight="342.0" prefWidth="200.0" />

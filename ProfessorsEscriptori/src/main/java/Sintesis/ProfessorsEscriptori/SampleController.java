@@ -32,22 +32,22 @@ public class SampleController implements Initializable {
 	public void buscaExercicis(MouseEvent event) {
 		String alumne = (alumnes.getSelectionModel().getSelectedItem().toString());
 		String[] splitAlumne = alumne.split(" "); //splitAlumne[0] = idalumne
+		System.out.println(splitAlumne[0]);
 		String consulta = "SELECT e.tema "
 						+ "FROM application_exercici e, application_resposta_user r "
-						+ "WHERE e.id == r.exercici and"
-						+ "r.usuari =="+splitAlumne[0];
-		
+						+ "WHERE e.id = r.exercici_id and "
+						+ "r.usuari_id ="+splitAlumne[0];
+		System.out.println(consulta);
 		Statement peticio;
 		ResultSet resultat;
 		try {
 			peticio = conect.createStatement();
 			resultat = peticio.executeQuery(consulta);
 			
-			ObservableList <ListView> exercicisList = FXCollections.observableArrayList();
+			ObservableList <String> exercicisList = FXCollections.observableArrayList();
 			while(resultat.next()){
 				String tema =resultat.getString("e.tema");
-				ListView actual = new ListView(tema);
-				exercicisList.add(actual);
+				exercicisList.add(tema);
 			}
 			exercicis.setItems(exercicisList);
 			
@@ -64,22 +64,24 @@ public class SampleController implements Initializable {
 	@FXML
 	public void buscaAlumnes(ActionEvent event) {
 		String cursTriat = curs.getText();
-		String consulta = "SELECT u.last_name, u.first_name p.id FROM auth_user u, application_perfil p,"
-						+ "WHERE u.id == p.usuari_id and"
-						+ "p.curs =="+curs;
+		String consulta = "SELECT u.last_name, u.first_name, p.id FROM auth_user u, application_perfil p, application_tipus t "
+						+ "WHERE u.id = p.usuari_id and"
+						+ " p.curs_id ="+cursTriat+" and"
+						+ " p.tipus_id = t.id and"
+						+ " t.nom = 'alumne'";
+		System.out.println(consulta);
 		Statement peticio;
 		ResultSet resultat;
 		try {
 			peticio = conect.createStatement();
 			resultat = peticio.executeQuery(consulta);
 			
-			ObservableList <ListView> alumnesList = FXCollections.observableArrayList();
+			ObservableList <String> alumnesList = FXCollections.observableArrayList();
 			while(resultat.next()){
 				String id = resultat.getString("p.id");
 				String cognom = resultat.getString("u.last_name");
 				String nom =resultat.getString("u.first_name");
-				ListView actual = new ListView(id, cognom, nom);
-				alumnesList.add(actual);
+				alumnesList.add(id+" "+cognom+" "+nom);
 			}
 			alumnes.setItems(alumnesList);
 			
